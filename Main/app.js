@@ -10,6 +10,7 @@ var admin = require('./routes/admin');
 var load = require('./routes/load');
 var options = require('./routes/options');
 var save = require('./routes/save');
+var artifact = require('./routes/artifact');
 
 
 var app = express();
@@ -31,6 +32,7 @@ app.use('/admin', admin);
 app.use('/load', load);
 app.use('/options', options);
 app.use('/save', save);
+app.use('/artifact', artifact);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
