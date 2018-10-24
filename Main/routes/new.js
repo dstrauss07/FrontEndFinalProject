@@ -10,7 +10,7 @@ let repo = require('../models/postRepository');
 // POST receives the data that user enters
   router.post("/",(req,res,next)=>{
   let character = {};
-  character.playername = req.body.playerName;
+  character.playerName = req.body.playerName;
   // character.race = req.body.race-chooser;
   // character.class = req.body.class-choser;
   repo.startGame(character);

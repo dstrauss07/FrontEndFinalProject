@@ -20,7 +20,7 @@ let loadPosts = () => {
     });
 }
 
-let updateJSON = () => {
+let savePosts = () => {
     fs.writeFile(fileName, JSON.stringify(gameList), (err) => {
         if (err) {
             console.error("error writing the file. " + err.message);
@@ -35,7 +35,7 @@ loadPosts();
 let repo = {
     startGame: (character) => {
         gameList.push(character);
-        updateJSON();
+        savePosts();
     }
 };
 
