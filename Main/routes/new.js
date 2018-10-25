@@ -11,8 +11,8 @@ let repo = require('../models/postRepository');
   router.post("/",(req,res,next)=>{
   let character = {};
   character.playerName = req.body.playerName;
-  // character.race = req.body.race-chooser;
-  // character.class = req.body.class-choser;
+  character.race = req.body.raceChooser;
+  character.class = req.body.classChooser;
   repo.startGame(character);
   res.redirect("/artifact");
 });
