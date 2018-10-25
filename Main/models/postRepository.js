@@ -5,22 +5,23 @@ const fs = require('fs'),
 
 let gameList = [];
 
-let loadPosts = () => {
+let loadChars = () => {
     fs.readFile(fileName, "utf8", (err, data) => {
         if (err) {
             console.error("error loading data file: " + err.message);
             throw err;
         }
         else {
-            let newPostsArr = JSON.parse(data);
-            if (newPostsArr.length > 0) {
-                gameList = newPostsArr;
+            let characterArr = JSON.parse(data);
+            if (characterArr.length > 0) {
+                gameList = characterArr;
+                newChar = characterArr.pop;
             }
         }
     });
 }
 
-let savePosts = () => {
+let saveChars = () => {
     fs.writeFile(fileName, JSON.stringify(gameList), (err) => {
         if (err) {
             console.error("error writing the file. " + err.message);
@@ -30,12 +31,19 @@ let savePosts = () => {
     });
 };
 
-loadPosts();
+loadChars();
+
 
 let repo = {
     startGame: (character) => {
         gameList.push(character);
-        savePosts();
+        saveChars();
+    },
+    getChars: () =>{
+        return gameList;
+    },
+    newCharacter:() =>{
+        return newChar;
     }
 };
 
