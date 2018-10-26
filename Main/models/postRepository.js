@@ -4,6 +4,8 @@ const fs = require('fs'),
     fileName = path.join(filePath, "gameData.json");
 
 let gameList = [];
+let newChar = [];
+
 
 let loadChars = () => {
     fs.readFile(fileName, "utf8", (err, data) => {
@@ -15,8 +17,8 @@ let loadChars = () => {
             let characterArr = JSON.parse(data);
             if (characterArr.length > 0) {
                 gameList = characterArr;
-                newChar = characterArr.pop;
-            }
+                console.log(gameList.length + " characters loaded");
+             }
         }
     });
 }
@@ -31,8 +33,11 @@ let saveChars = () => {
     });
 };
 
-loadChars();
 
+
+
+loadChars();
+newChar = gameList.slice(-1,1);
 
 let repo = {
     startGame: (character) => {
@@ -40,10 +45,12 @@ let repo = {
         saveChars();
     },
     getChars: () =>{
-        return gameList;
+        console.log("got latest characters")
+        return gameList
     },
     newCharacter:() =>{
-        return newChar;
+        console.log(newChar.length)
+        return newChar
     }
 };
 
