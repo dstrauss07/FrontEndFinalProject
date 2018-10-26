@@ -45,13 +45,29 @@ let repo = {
         saveChars();
     },
     getChars: () =>{
-        console.log("got latest characters")
+        console.log("got latest characters");
         return gameList
     },
     newCharacter:() =>{
         console.log(newChar.length)
         return newChar
-    }
+    },
+    getCharByName: (playerName) =>{
+        return gameList.find((character)=> {
+            return character.playerName === playerName;
+        });
+    },
+    getCharIndex: (playerName) => {
+        return gameList.findIndex((character) => {
+            return character.playerName === playerName;
+        });
+    },
+    deleteChar: (index) => {
+        gameList.splice(index,1);
+        console.log("the post has been deleted.");
+        saveChars();
+    },
+
 };
 
 module.exports = repo;
